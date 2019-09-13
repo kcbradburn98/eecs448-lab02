@@ -37,7 +37,7 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
-	for(int i=0; i<=m_size; i++)
+	for(int i=0; i<m_size; i++)
 	{
 		if (temp->getValue() == value)
 		{
@@ -104,20 +104,22 @@ template <typename T>
 bool LinkedList<T>::removeBack()
 {
 	Node<T>* lastNode = m_front;
-	bool isRemoved = false;
+	Node<T>* temp;
 
 	if(!isEmpty())
 	{
 	for (int i=0; i<m_size-2; i++)
 		{
-			lastNode->getNext();
+			lastNode = lastNode->getNext();
 		}
-		delete lastNode->getNext();
-		lastNode = nullptr;
+		temp = lastNode;
+		lastNode = lastNode->getNext();
+		delete lastNode;
+		temp -> setNext(nullptr);
 		m_size--;
-		isRemoved = true;
+		return(true);
 	}
-	return(isRemoved);
+	return(false);
 }
 
 template <typename T>
