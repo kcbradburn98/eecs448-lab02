@@ -32,25 +32,6 @@ int LinkedList<T>::size() const
 	return(m_size);
 }
 
-template <typename T>
-bool LinkedList<T>::search(T value) const
-{
-	Node<T>* temp = m_front;
-	bool isFound = false;
-	for(int i=0; i<=m_size; i++)
-	{
-		if (temp->getValue() == value)
-		{
-
-			return(true);
-		}
-		else
-	{
-	temp = temp->getNext();
-	}
-}
-return(isFound);
-}
 
 template <typename T>
 std::vector<T> LinkedList<T>::toVector() const
@@ -100,24 +81,7 @@ void LinkedList<T>::addFront(T value)
 	m_size++;
 }
 
-template <typename T>
-bool LinkedList<T>::removeBack()
-{
-	Node<T>* lastNode = m_front;
-	bool isRemoved = false;
 
-	if(!isEmpty())
-	{
-	for (int i=0; i<=m_size-1; i++)
-		{
-			lastNode->getNext();
-		}
-		delete lastNode;
-		m_size--;
-		isRemoved = true;
-	}
-	return(isRemoved);
-}
 
 template <typename T>
 bool LinkedList<T>::removeFront()
